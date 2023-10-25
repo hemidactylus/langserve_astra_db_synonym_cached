@@ -1,7 +1,7 @@
 # LLM-cache LangServe chain template
 
 A simple chain template showcasing usage of LLM Caching
-backed by Astra DB / Cassandra.
+backed by Astra DB / Apache Cassandra®.
 
 ## Setup:
 
@@ -11,7 +11,7 @@ You need:
 - likewise, get your [Database ID](https://awesome-astra.github.io/docs/pages/astra/faq/#where-should-i-find-a-database-identifier) ready, you will have to enter it below;
 - an **OpenAI API Key**. (More info [here](https://cassio.org/start_here/#llm-access), note that out-of-the-box this demo supports OpenAI unless you tinker with the code.)
 
-_Note:_ you can alternatively use a regular Apache Cassandra® cluster: to do so, make sure you provide the `USE_CASSANDRA_CLUSTER` entry as shown in `.env.template` and the subsequent environment variables to specify how to connect to it.
+_Note:_ you can alternatively use a regular Cassandra cluster: to do so, make sure you provide the `USE_CASSANDRA_CLUSTER` entry as shown in `.env.template` and the subsequent environment variables to specify how to connect to it.
 
 You need to provide the connection parameters and secrets through environment variables. Please refer to `.env.template` for what variables are required.
 
