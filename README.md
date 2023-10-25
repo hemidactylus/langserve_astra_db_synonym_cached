@@ -27,3 +27,21 @@ poetry run python main.py
 ```
 
 You will be able to check that, after the chain has been run with the sample inputs, there will be entries in the database table acting as LLM response cache.
+
+## Adding to LangServe
+
+To add this chain to your LangServe app,
+
+```
+poe add --repo=hemidactylus/langserve_cassandra_synonym_cached
+```
+
+(you may need to prepend `poetry run` to `poe` commands).
+
+Then, after setting the environment variables as specified for the standalone usage above, you can start LangServe:
+
+```
+poe start
+```
+
+and test the new endpoints by opening `http://127.0.0.1:8000/docs`.
