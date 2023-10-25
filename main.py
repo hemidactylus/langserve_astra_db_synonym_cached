@@ -1,4 +1,4 @@
-from cassandra_synonyms_caching import chain
+from cassandra_synonym_caching import chain
 
 if __name__ == "__main__":
     response = chain.invoke({"word": "soar"})

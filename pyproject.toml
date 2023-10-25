@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cassandra_synonyms_caching"
+name = "cassandra_synonym_caching"
 version = "0.0.1"
 description = ""
 authors = ["Stefano Lottini <stefano.lottini@datastax.com>"]
@@ -13,7 +13,7 @@ tiktoken = "^0.5.1"
 cassio = "^0.1.3"
 
 [tool.langserve]
-export_module = "cassandra_synonyms_caching"
+export_module = "cassandra_synonym_caching"
 export_attr = "chain"
 
 
