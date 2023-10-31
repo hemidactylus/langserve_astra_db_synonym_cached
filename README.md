@@ -1,7 +1,7 @@
-# LLM-cache LangServe chain template
+# LLM-cache Langchain template with Cassandra
 
 A simple chain template showcasing usage of LLM Caching
-backed by Astra DB / Apache Cassandra®.
+backed by (CQL) Astra DB / Apache Cassandra®.
 
 ## Setup:
 
@@ -17,31 +17,34 @@ You need to provide the connection parameters and secrets through environment va
 
 ## Running the chain
 
-For a standalone usage (i.e. outside of LangServe), first clone this repo
-and then, in its root directory:
+### Within a LangChain app
+
+Assuming you have already created the app (i.e. `langchain app new MyApp; cd MyApp`), this is what you'll need:
 
 ```
-poetry env use /usr/bin/python3.11    # adjust to your system
+langchain app add --repo "hemidactylus/langserve_cassandra_synonym_caching" --branch main
+```
+
+*Important*: adjust the project's `server.py` as instructed in the output of the above.
+
+Now, make sure all required environment variables are set, and run
+
+```
+langchain serve
+```
+
+that's it. You can now test the new endpoints by opening `http://127.0.0.1:8000/docs`, or visiting directly `http://127.0.0.1:8000/cassandra_entomology_rag/playground/`.
+
+You will provide a word and get up to five synonyms back. Pay attention to the response times when submitting a word already used: the answer will be much faster, showing caching in action.
+
+
+### Stand-alone
+
+For a standalone usage (outside of `langchain serve`), clone this repo,
+`cd` to its root directory, ensure you set all environment variables,
+then launch:
+
+```
 poetry install
-poetry run python main.py 
+poetry run python main.py
 ```
-
-You will be able to check that, after the chain has been run with the sample inputs, there will be entries in the database table acting as LLM response cache.
-
-## Adding to LangServe
-
-To add this chain to your LangServe app,
-
-```
-poe add --repo=hemidactylus/langserve_cassandra_synonym_cached
-```
-
-(you may need to prepend `poetry run` to `poe` commands).
-
-Then, after setting the environment variables as specified for the standalone usage above, you can start LangServe:
-
-```
-poe start
-```
-
-and test the new endpoints by opening `http://127.0.0.1:8000/docs`.
